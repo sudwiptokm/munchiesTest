@@ -3,8 +3,10 @@ import {
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import Link from "next/link";
 import Router from "next/router";
 import React from "react";
+import { handleClickScroll } from "../../../utils/functions";
 
 type Props = {};
 
@@ -24,10 +26,24 @@ export default function Header({}: Props) {
         <p className="cursor-pointer" onClick={() => Router.push("/")}>
           Home
         </p>
-        <p>About</p>
-        <p>Menu</p>
-        <p>Blog</p>
-        <p>Contact</p>
+        <p
+          className="cursor-pointer"
+          onClick={() => handleClickScroll("about")}
+        >
+          About
+        </p>
+        <p className="cursor-pointer" onClick={() => handleClickScroll("menu")}>
+          Menu
+        </p>
+        <p className="cursor-pointer" onClick={() => handleClickScroll("blog")}>
+          Blog
+        </p>
+        <p
+          className="cursor-pointer"
+          onClick={() => handleClickScroll("contact")}
+        >
+          Contact
+        </p>
       </div>
 
       <div className="flex items-center space-x-10">

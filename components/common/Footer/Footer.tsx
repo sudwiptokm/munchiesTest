@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Router from "next/router";
 import React from "react";
+import { handleClickScroll } from "../../../utils/functions";
 
 type Props = {};
 
@@ -9,11 +11,33 @@ export default function Footer({}: Props) {
       <div className="flex items-center justify-between pb-[34px] border-b border-white mb-4">
         <p className="text-[32px] leading-5 tracking-tight sqo">WHAT2EAT</p>
         <div className="flex space-x-10 items-center text-lg font-normal sf leading-5 tracking-tight">
-          <p className="cursor-pointer">Home</p>
-          <p className="cursor-pointer">About</p>
-          <p className="cursor-pointer">Menu</p>
-          <p className="cursor-pointer">Blog</p>
-          <p className="cursor-pointer">Contact</p>
+          <p className="cursor-pointer" onClick={() => Router.push("/")}>
+            Home
+          </p>
+          <p
+            className="cursor-pointer"
+            onClick={() => handleClickScroll("about")}
+          >
+            About
+          </p>
+          <p
+            className="cursor-pointer"
+            onClick={() => handleClickScroll("menu")}
+          >
+            Menu
+          </p>
+          <p
+            className="cursor-pointer"
+            onClick={() => handleClickScroll("blog")}
+          >
+            Blog
+          </p>
+          <p
+            className="cursor-pointer"
+            onClick={() => handleClickScroll("contact")}
+          >
+            Contact
+          </p>
         </div>
         <div className="flex space-x-[13.5px] items-center">
           <div className="w-[27.75px] h-[25.5px] bg-white rounded-[5px] flex items-center justify-center cursor-pointer">

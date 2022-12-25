@@ -50,7 +50,10 @@ export default function LandingPage({}: Props) {
         {/* Header Ends */}
 
         {/* Hero Section */}
-        <section className="flex-1 h-full grid grid-cols-2 space-x-[100px] items-center">
+        <section
+          className="flex-1 h-full grid grid-cols-2 space-x-[100px] items-center"
+          id="about"
+        >
           <div>
             <p className="text-[70px] font-medium leading[82.03px]">
               Authentic Home food in UK
@@ -79,7 +82,7 @@ export default function LandingPage({}: Props) {
       {/* Main */}
       <main>
         {/* Product Section */}
-        <section className="pt-[105px] px-[130px] bg-[#F7F8FA]">
+        <section className="pt-[105px] px-[130px] bg-[#F7F8FA]" id="menu">
           <p className="text-2xl leading-6 tracking-tight font-medium mb-4">
             Home Kitchen
           </p>
@@ -87,7 +90,7 @@ export default function LandingPage({}: Props) {
           {/* Categories */}
           <div className="inline-flex border border-secondary rounded-[10px] divide-x divide-secondary h-[46px] items-center">
             <div
-              className={`h-full cursor-pointer rounded-l-[10px] px-10 sf text-base leading-5 font-semibold tracking-tight flex items-center ${
+              className={`h-full cursor-pointer rounded-l-[8px] px-10 sf text-base leading-5 font-semibold tracking-tight flex items-center ${
                 CurrentCategory === Categories.ALL
                   ? "bg-secondary text-black"
                   : "bg-[#F7F8FA] text-caption"
@@ -127,7 +130,7 @@ export default function LandingPage({}: Props) {
               <p>New</p>
             </div>
             <div
-              className={`h-full rounded-r-[10px] cursor-pointer px-10 sf text-base leading-5 font-semibold tracking-tight flex items-center ${
+              className={`h-full rounded-r-[8px] cursor-pointer px-10 sf text-base leading-5 font-semibold tracking-tight flex items-center ${
                 CurrentCategory === Categories.COMING
                   ? "bg-secondary text-black"
                   : "bg-[#F7F8FA] text-caption"
@@ -169,28 +172,31 @@ export default function LandingPage({}: Props) {
         {/* Product Section Ends*/}
 
         {/* Blog Section */}
-        <section className="py-[100px] px-[129px] bg-white">
+        <section className="py-[100px] px-[129px] bg-white" id="blog">
           <p className="text-2xl leading-6 tracking-tight font-medium mb-7">
             Our Blog
           </p>
           <div className="grid grid-cols-4 gap-10">
             <div className="flex flex-col justify-between">
-              <BlogCard />
-              <BlogCard />
+              <BlogCard url="/images/blogs/i1.png" />
+              <BlogCard url="/images/blogs/i2.png" />
             </div>
             <div className="col-span-2">
-              <BlogCard isLarge />
+              <BlogCard isLarge url="/images/blogs/i3.png" />
             </div>
             <div className="flex flex-col justify-between">
-              <BlogCard />
-              <BlogCard />
+              <BlogCard url="/images/blogs/i4.png" />
+              <BlogCard url="/images/blogs/i5.png" />
             </div>
           </div>
         </section>
         {/* Blog Section Ends */}
 
         {/* Contact Section */}
-        <section className="py-[100px] px-[109px] bg-[#F7F8FA] flex items-center space-x-[103px] mb-[60px] sf">
+        <section
+          className="py-[100px] px-[109px] bg-[#F7F8FA] flex items-center space-x-[103px] mb-[60px] sf"
+          id="contact"
+        >
           <div className="w-full">
             <p className="text-2xl leading-6 tracking-tight font-medium">
               Do you have a question <br /> or want to become a seller?

@@ -3,17 +3,21 @@ import React from "react";
 
 type Props = {
   isLarge?: boolean;
+  url: string;
 };
 
-export default function BlogCard({ isLarge }: Props) {
+export default function BlogCard({ isLarge, url }: Props) {
   return (
     <div className="w-full rounded-t-[10px]">
       <Image
         alt=""
-        src={require("../../../public/images/pizza.png")}
-        className={`rounded-t-[10px] object-cover ${
+        src={url}
+        className={`w-full h-full rounded-t-[10px] object-contain ${
           !isLarge ? "h-[183px]" : "h-[421px]"
         }`}
+        width={100}
+        height={183}
+        unoptimized
       />
       <div className="pl-4 pr-[22px] py-[15px] sf tracking-tight">
         <p className="text-base leading-5">

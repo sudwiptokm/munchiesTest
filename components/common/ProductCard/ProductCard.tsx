@@ -41,7 +41,6 @@ export default function ProductCard({ product, addProduct }: Props) {
               <p>4.7</p>
             </div>
             <div className="py-1 px-[6px] rounded-[5px] bg-[#F7F8FA] flex items-center space-x-[6px]">
-              <StarIcon className="w-4 h-4 text-black" />
               <p>50-79 min</p>
             </div>
           </div>

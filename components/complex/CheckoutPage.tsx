@@ -135,9 +135,9 @@ export default function CheckoutPage({}: Props) {
                     height={120}
                     className="bg-slate-400 rounded-lg w-[120px] h-[120px] object-cover"
                   />
-                  <div className="sf flex flex-col justify-between py-4">
+                  <div className="sf flex flex-col py-4">
                     <p className="text-3xl font-medium">{item.name}</p>
-                    <p className="text-base font-medium">
+                    <p className="text-base font-medium mt-6">
                       ৳ {item.price} + {item.vat} (VAT)
                     </p>
                   </div>
