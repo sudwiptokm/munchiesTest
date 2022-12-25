@@ -41,3 +41,7 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
 }
+
+.shadowFalse {
+  box-shadow: 0 0 1px 1px white;
+}

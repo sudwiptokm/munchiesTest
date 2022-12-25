@@ -1,6 +1,6 @@
 import { PlusIcon, StarIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectItems } from "../../../slices/basketSlice";
 import { getOccurrence } from "../../../utils/functions";
@@ -13,19 +13,23 @@ type Props = {
 
 export default function ProductCard({ product, addProduct }: Props) {
   const items = useSelector(selectItems);
+  const [err, setErr] = useState(false);
 
   return (
-    <div className="w-[277px] bg-white sf border-none rounded-t-[10px]">
-      <div className="h-[250px] flex items-center justify-center rounded-t-[10px] relative border-none">
+    <div className="w-[277px] bg-white sf border-none rounded-t-[10px] overflow-hidden shadowFalse">
+      <div className="h-[250px] flex items-center justify-center relative border-none">
         <Image
           alt=""
           src={product.image}
           width={277}
           height={250}
-          className="rounded-t-[12px] h-full w-full object-cover border-none "
+          className={`h-full w-full object-cover border-white ${
+            err && "scale-110"
+          }`}
           id="productImage"
+          onError={() => setErr(true)}
         />
-        <div className="w-8 h-[30px] bg-secondary rounded-tl-[10px] absolute top-0 left-0 flex items-center justify-center">
+        <div className="w-8 h-[30px] bg-secondary absolute top-0 left-0 flex items-center justify-center">
           <p className="sf text-xs leading-5 tracking-tight">50%</p>
         </div>
       </div>
