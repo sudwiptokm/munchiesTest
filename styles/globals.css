@@ -15,6 +15,12 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "SquadaOne";
+  src: url("../fonts/SquadaOne.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
   font-family: Gilroy;
@@ -22,4 +28,8 @@ body {
 
 .sf {
   font-family: SFPro;
+}
+
+.sqo {
+  font-family: SquadaOne;
 }
