@@ -76,7 +76,7 @@ export default function OrderPage({}: Props) {
                       </div>
                     </div>
                   </div>
-                  <div>
+                  <div className="w-[250px]">
                     <p>
                       Total: ৳ {order.calculation.total} (
                       {order.calculation.price}+{order.calculation.vat} VAT)
