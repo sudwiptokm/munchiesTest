@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from "react";
-import {
-  MagnifyingGlassIcon,
-  ShoppingBagIcon,
-} from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { Categories } from "../../utils/enums";
 import Dropdown from "../common/Dropdown/Dropdown";
@@ -12,64 +8,45 @@ import { PlusIcon } from "@heroicons/react/20/solid";
 import BlogCard from "../common/BlogCard/BlogCard";
 import InputField from "../common/InputField/InputField";
 import axios from "axios";
+import { ProductType } from "../../utils/types";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToBasket,
+  selectItems,
+  selectTotal,
+} from "../../slices/basketSlice";
+import Header from "../common/Header/Header";
+import Footer from "../common/Footer/Footer";
 
 type Props = {};
-
-type Product = {
-  id: number;
-  name: string;
-  price: number;
-  quantity_available: number;
-  image: string;
-  vat: number;
-  addons?: { id: number; name: string; is_default?: boolean; price: number }[];
-};
 
 export default function LandingPage({}: Props) {
   const [CurrentCategory, SetCurrentCategory] = useState<Categories>(
     Categories.ALL
   );
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<ProductType[]>([]);
   useEffect(() => {
     axios.defaults.baseURL = "/";
     axios
-      .get(`${process.env.URL}/products`)
+      .get(`https://${process.env.URL}/products`)
       .then((res) => setProducts(res.data));
-    // fetch("https://munchies-api.up.railway.app/products")
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data));
   }, []);
 
+  const items = useSelector(selectItems);
+  const total = useSelector(selectTotal);
+  const dispatch = useDispatch();
+
+  const addItemToBasket = (product: ProductType) => {
+    dispatch(addToBasket(product));
+  };
+
+  // console.log(items, total);
+
   return (
-    <div className="max-w-[1440px] mx-auto">
+    <div className="max-w-[1440px] mx-auto sf">
       <div className="h-[800px] bg-[#0C1712] text-white px-[108px]">
         {/* Header */}
-        <header className="h-20 flex items-center justify-between">
-          <div>
-            <Image
-              alt="logo"
-              src={require("../../public/images/logo.png")}
-              className="w-[128px] h-[65px]"
-              priority
-            />
-          </div>
-
-          <div className="flex space-x-10 items-center text-lg font-normal sf">
-            <p>Home</p>
-            <p>About</p>
-            <p>Menu</p>
-            <p>Blog</p>
-            <p>Contact</p>
-          </div>
-
-          <div className="flex items-center space-x-10">
-            <MagnifyingGlassIcon className="h-5 w-5" />
-            <div className="relative">
-              <ShoppingBagIcon className="h-5 w-5" />
-              <div className="absolute rounded-full w-2 h-2 bg-secondary top-0 right-0 z-10"></div>
-            </div>
-          </div>
-        </header>
+        <Header />
         {/* Header Ends */}
 
         {/* Hero Section */}
@@ -173,11 +150,7 @@ export default function LandingPage({}: Props) {
             {products.length !== 0 &&
               products.map((product, idx: number) => (
                 <div key={product?.id}>
-                  <ProductCard
-                    url={product.image}
-                    name={product.name}
-                    price={product.price}
-                  />
+                  <ProductCard product={product} addProduct={addItemToBasket} />
                 </div>
               ))}
           </div>
@@ -249,39 +222,7 @@ export default function LandingPage({}: Props) {
         {/* Contact Section Ends */}
 
         {/* Footer */}
-        <footer className="bg-primary h-[137px] pt-[35px] px-[130px] pb-3 text-white">
-          <div className="flex items-center justify-between pb-[34px] border-b border-white mb-4">
-            <p className="text-[32px] leading-5 tracking-tight sqo">WHAT2EAT</p>
-            <div className="flex space-x-10 items-center text-lg font-normal sf leading-5 tracking-tight">
-              <p className="cursor-pointer">Home</p>
-              <p className="cursor-pointer">About</p>
-              <p className="cursor-pointer">Menu</p>
-              <p className="cursor-pointer">Blog</p>
-              <p className="cursor-pointer">Contact</p>
-            </div>
-            <div className="flex space-x-[13.5px] items-center">
-              <div className="w-[27.75px] h-[25.5px] bg-white rounded-[5px] flex items-center justify-center cursor-pointer">
-                <Image
-                  alt="fb"
-                  src={"/images/fb_logo.png"}
-                  width={9}
-                  height={17}
-                />
-              </div>
-              <div className="w-[27.75px] h-[25.5px] bg-white rounded-[5px] flex items-center justify-center cursor-pointer">
-                <Image
-                  alt="insta"
-                  src={"/images/insta_logo.png"}
-                  width={17}
-                  height={17}
-                />
-              </div>
-            </div>
-          </div>
-          <p className="text-center text-xs leading-5 tracking-tight sf">
-            Copyright @2021 What2Eat
-          </p>
-        </footer>
+        <Footer />
         {/* Footer Ends*/}
       </main>
       {/* Main Ends*/}

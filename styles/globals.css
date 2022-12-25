@@ -33,3 +33,11 @@ body {
 .sqo {
   font-family: SquadaOne;
 }
+
+#productImage {
+  background-image: url("../public/images/no_image.png");
+  border-radius: 10px 10px 0px 0px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { ProductType } from "../utils/types";
 
 const initialState = {
   items: [],
@@ -8,34 +9,26 @@ export const basketSlice = createSlice({
   name: "basket",
   initialState,
   reducers: {
-    addToBasket: (state: any, action) => {
+    addToBasket: (state: any, action: { payload: ProductType }) => {
       state.items = [...state.items, action.payload];
     },
-    // removeFromBasket: (state, action) => {
-    //   const index = state.items.findIndex(
-    //     (basketItem: any) => basketItem.id === action.payload
-    //   );
 
-    //   let newBasket = [...state.items];
-
-    //   if (index >= 0) {
-    //     newBasket.splice(index, 1);
-    //   } else {
-    //     console.warn("The product not found in the basket");
-    //   }
-
-    //   state.items = newBasket;
-    // },
+    clearBasket: (state: any) => {
+      state.items = [];
+    },
   },
 });
 
 // export const { addToBasket, removeFromBasket } = basketSlice.actions;
-export const { addToBasket } = basketSlice.actions;
+export const { addToBasket, clearBasket } = basketSlice.actions;
 
 // Selectors - This is how we pull information from the Global store slice
 export const selectItems = (state: any) => state.basket.items;
 
 export const selectTotal = (state: any) =>
   state.basket.items.reduce((total: any, item: any) => total + item.price, 0);
+
+export const selectTotalVAT = (state: any) =>
+  state.basket.items.reduce((total: any, item: any) => total + item.vat, 0);
 
 export default basketSlice.reducer;
