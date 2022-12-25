@@ -18,6 +18,10 @@ export default function ProductCard({ url, name, price }: Props) {
           width={277}
           height={250}
           className="rounded-t-[10px] h-full w-full object-cover"
+          onError={({ currentTarget }) => {
+            currentTarget.onerror = null;
+            currentTarget.src = "/images/delivery.png";
+          }}
         />
       </div>
       <div className="py-[15.5px] px-[12.5px]">

@@ -7,7 +7,7 @@ type Props = {
 
 export default function BlogCard({ isLarge }: Props) {
   return (
-    <div className="min-w-[277px] rounded-t-[10px]">
+    <div className="w-full rounded-t-[10px]">
       <Image
         alt=""
         src={require("../../../public/images/pizza.png")}

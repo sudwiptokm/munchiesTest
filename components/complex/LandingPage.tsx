@@ -35,6 +35,9 @@ export default function LandingPage({}: Props) {
     axios
       .get(`${process.env.URL}/products`)
       .then((res) => setProducts(res.data));
+    // fetch("https://munchies-api.up.railway.app/products")
+    //   .then((res) => res.json())
+    //   .then((data) => console.log(data));
   }, []);
 
   return (
@@ -47,6 +50,7 @@ export default function LandingPage({}: Props) {
               alt="logo"
               src={require("../../public/images/logo.png")}
               className="w-[128px] h-[65px]"
+              priority
             />
           </div>
 
@@ -192,7 +196,7 @@ export default function LandingPage({}: Props) {
         {/* Product Section Ends*/}
 
         {/* Blog Section */}
-        <section className="py-[100px] px-[130px] bg-white">
+        <section className="py-[100px] px-[129px] bg-white">
           <p className="text-2xl leading-6 tracking-tight font-medium mb-7">
             Our Blog
           </p>
